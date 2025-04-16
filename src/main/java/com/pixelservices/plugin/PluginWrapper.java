@@ -5,6 +5,7 @@ import com.pixelservices.plugin.descriptor.PluginDescriptor;
 import com.pixelservices.plugin.exceptions.PluginLoadException;
 import com.pixelservices.plugin.lifecycle.PluginState;
 import com.pixelservices.plugin.manager.PluginManager;
+import com.pixelservices.plugin.loader.CustomClassLoader;
 
 import java.nio.file.Path;
 
@@ -14,6 +15,7 @@ public class PluginWrapper {
     private final PluginManager pluginManager;
     private final PluginConfigurationFinder configurationFinder;
     private Plugin plugin;
+    private CustomClassLoader classLoader;
     private PluginState state = PluginState.CREATED;
 
     public PluginWrapper(PluginManager pluginManager, PluginDescriptor pluginDescriptor, PluginConfigurationFinder configurationFinder, Path path) {
@@ -25,7 +27,8 @@ public class PluginWrapper {
 
     public void load() throws PluginLoadException {
         try {
-            this.plugin = PluginFactory.createPlugin(path, pluginDescriptor);
+            this.classLoader = new CustomClassLoader(path, PluginWrapper.class.getClassLoader());
+            this.plugin = PluginFactory.createPlugin(pluginDescriptor, classLoader);
             plugin.load(this, pluginDescriptor, configurationFinder);
             state = PluginState.LOADED;
         } catch (Throwable e) {
@@ -36,6 +39,7 @@ public class PluginWrapper {
 
     public void unload() {
         plugin = null;
+        classLoader = null;
         state = PluginState.UNLOADED;
     }
 

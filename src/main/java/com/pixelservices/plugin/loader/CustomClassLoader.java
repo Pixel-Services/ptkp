@@ -33,15 +33,11 @@ public class CustomClassLoader extends URLClassLoader {
         try {
             return super.loadClass(name);
         } catch (ClassNotFoundException e) {
-            for (URL url : getURLs()) {
-                try (URLClassLoader urlClassLoader = new URLClassLoader(new URL[]{url}, getParent())) {
-                    return urlClassLoader.loadClass(name);
-                } catch (ClassNotFoundException ignored) {
-                } catch (IOException ioException) {
-                    throw new ClassNotFoundException("Failed to load class due to IO error", ioException);
-                }
+            try {
+                return findClass(name);
+            } catch (ClassNotFoundException ex) {
+                throw e;
             }
-            throw e;
         }
     }
 }

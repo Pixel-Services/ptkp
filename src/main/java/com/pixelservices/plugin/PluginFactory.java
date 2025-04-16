@@ -4,11 +4,9 @@ import com.pixelservices.plugin.descriptor.PluginDescriptor;
 import com.pixelservices.plugin.exceptions.PluginLoadException;
 import com.pixelservices.plugin.loader.CustomClassLoader;
 
-import java.nio.file.Path;
-
 public class PluginFactory {
-    public static Plugin createPlugin(Path path, PluginDescriptor descriptor) throws PluginLoadException {
-        try (CustomClassLoader classLoader = new CustomClassLoader(path, PluginFactory.class.getClassLoader())) {
+    public static Plugin createPlugin(PluginDescriptor descriptor, CustomClassLoader classLoader) throws PluginLoadException {
+        try {
             Class<?> pluginClass = classLoader.loadClass(descriptor.getPluginClass());
             return (Plugin) pluginClass.newInstance();
         } catch (Throwable e) {
