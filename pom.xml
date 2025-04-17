@@ -20,17 +20,14 @@
     </license>
   </licenses>
 
-  <distributionManagement>
-    <repository>
-      <id>Pixel-Services</id>
-      <url>https://maven.pixel-services.com/releases</url>
-    </repository>
-  </distributionManagement>
-
   <repositories>
     <repository>
       <id>jitpack.io</id>
       <url>https://jitpack.io</url>
+    </repository>
+    <repository>
+      <id>Pixel-Services</id>
+      <url>https://maven.pixel-services.com/releases</url>
     </repository>
   </repositories>
 
