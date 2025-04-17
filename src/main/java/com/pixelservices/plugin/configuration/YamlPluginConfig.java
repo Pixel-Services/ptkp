@@ -1,5 +1,7 @@
 package com.pixelservices.plugin.configuration;
 
+import com.pixelservices.logger.Logger;
+import com.pixelservices.plugin.exceptions.ConfigSaveException;
 import org.simpleyaml.configuration.file.YamlConfiguration;
 
 import java.io.File;
@@ -55,6 +57,16 @@ public class YamlPluginConfig extends PluginConfig {
     }
 
     @Override
+    public short getShort(String key) {
+        return (short) yamlConfig.getInt(key);
+    }
+
+    @Override
+    public char getChar(String key) {
+        return (char) yamlConfig.getInt(key);
+    }
+
+    @Override
     public Object get(String path) {
         return yamlConfig.get(path);
     }
@@ -64,17 +76,18 @@ public class YamlPluginConfig extends PluginConfig {
         yamlConfig.set(path, value);
     }
 
-    /**
-     * Saves the configuration file to disk.
-     */
     @Override
     public void save() {
         try {
+            if (!file.getParentFile().exists() && !file.getParentFile().mkdirs()) {
+                throw new ConfigSaveException("Failed to create directories for the configuration file.");
+            }
             if (!file.exists() && !file.createNewFile()) {
-                return;
+                throw new ConfigSaveException("Failed to create the configuration file.");
             }
             yamlConfig.save(file);
-        } catch (IOException ignored) {
+        } catch (IOException e) {
+            throw new ConfigSaveException(e);
         }
     }
 }
