@@ -34,16 +34,16 @@
   <dependencies>
     <!-- Logger -->
     <dependency>
-      <groupId>com.pixelservices.logger</groupId>
+      <groupId>com.pixelservices</groupId>
       <artifactId>ptkl</artifactId>
       <version>1.3.2</version>
     </dependency>
 
     <!-- Configuration -->
     <dependency>
-      <groupId>com.pixelservices.logger</groupId>
+      <groupId>com.pixelservices</groupId>
       <artifactId>ptkc</artifactId>
-      <version>1.3.2</version>
+      <version>1.3.4</version>
     </dependency>
 
     <!-- JUnit Testing -->
