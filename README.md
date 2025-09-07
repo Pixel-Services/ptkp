@@ -1,14 +1,14 @@
-# ptkp - Plugin System 🛠️
-Ptkp is a Framework for plugin systems. 
+# PTKP – Plugin System Framework 🛠️
+PTKP is a lightweight and flexible plugin system framework built for Java applications. It provides a simple yet powerful foundation for building extensible systems using a modular plugin architecture.
 
-## Getting Started
+## 🚀 Getting Started
 
 ### Prerequisites
 
 - Java 17 or higher
 - Maven
 
-## Installation
+## 📦 Installation
 To include ptkp in your project, add the following dependency and repository to your ``pom.xml``:
 
 ### Dependency
@@ -27,6 +27,8 @@ To include ptkp in your project, add the following dependency and repository to 
     <url>https://maven.pixel-services.com/releases</url>
 </repository>
 ```
+
+Replace ```${ptkpversion}``` with the latest available version. You can find the latest release on the [Maven Repository](https://maven.pixel-services.com/releases)
 
 ## Contributing
 We welcome contributions! To contribute to ptkp:
