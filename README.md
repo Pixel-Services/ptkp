@@ -1,5 +1,5 @@
 # ptkp - Plugin System 🛠️
-Ptkp is a library made for plugin systems. It was previously part of the [PTK (Pixel Tool Kit)](https://github.com/Pixel-Services/PixelToolkit) library, but has been separated into its own library for easier use and maintenance. 
+Ptkp is a Framework for plugin systems. 
 
 ## Getting Started
 
