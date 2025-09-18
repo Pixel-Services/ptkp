@@ -1,7 +1,8 @@
 # PTKP – Plugin System Framework 🛠️
 PTKP is a lightweight and flexible plugin system framework built for Java applications. It provides a simple yet powerful foundation for building extensible systems using a modular plugin architecture.
 
-## 🚀 Getting Started
+## <img width="1920" height="1080" alt="banner-large" src="https://github.com/user-attachments/assets/4694ca2e-4736-4318-b306-e0c98ca59088" />
+🚀 Getting Started
 
 ### Prerequisites
 
